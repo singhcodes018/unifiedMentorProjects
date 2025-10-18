@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe App</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Recipe Finder</h2>
+    <p>Search mouth watering recipe to satisfy your craving</p>
+    <div class="searchBox">
+  <input type="text" placeholder="Search for recipes" id="searchInput">
+</div>
+<button class="searchBtn" id="searchBtn" onclick="SearchRecipes()">Search</button>
+  </div>
+
+<div class="recipes" id="recipes"></div>
+<div class="notFound" id="notFound">Search your favourite recipes😍</div>
+
+<div class="popup-overlay" id="popupOverlay">
+<div class="popup-card" id="popupCard">
+  <button class="close-popup" onclick="closePopup()">❌</button>
+  <h3 id="recipe-header"></h3>
+  <p id="recipeDetails"></p>
+</div>
+</div>
+
+<div class="loader" id="loader" style="display: none;"></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

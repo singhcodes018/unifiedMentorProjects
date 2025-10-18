@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f8f8;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container Section */
+.container {
+  width: 100%;
+  padding: 70px 20px;
+  background: url(images/vecteezy_vegetable-salad-in-pan_1312941.jpg) center/cover no-repeat;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+/* Overlay effect for readability */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45); /* dark overlay */
+  z-index: 0; /* keep behind content */
+}
+
+.container h2,
+.container p,
+.searchBox,
+.searchBtn {
+  position: relative;
+  z-index: 2; /* keep above overlay */
+}
+
+.container h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+.container p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Search Box */
+.searchBox {
+  max-width: 600px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.searchBox input {
+  padding: 14px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.searchBox input::placeholder {
+  color: #888;
+}
+
+/* Standalone Search Button */
+.searchBtn {
+  display: block;
+  margin: 20px auto 0; /* space below input */
+  padding: 14px 34px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff512f, #dd2476); /* vibrant gradient */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.searchBtn:hover {
+  background: linear-gradient(135deg, #f85032, #e73827);
+  transform: translateY(-2px) scale(1.07);
+  box-shadow: 0 8px 25px rgba(255, 87, 87, 0.5);
+}
+
+/* Recipe Cards Container */
+.recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Recipe Card Styling */
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card-body p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.card-body .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.card-body .tag {
+  background: #f0f0f0;
+  color: #666;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.card-body .recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.view-recipe {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.view-recipe:hover {
+  background: linear-gradient(135deg, #f85032, #e73827);
+  transform: translateY(-2px);
+}
+
+.searchBtn:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Not Found Message */
+.notFound {
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 18px 25px;
+  border-radius: 10px;
+  background: rgba(126, 255, 87, 0.1); /* light green background */
+  border: 1px solid rgba(0, 200, 0, 0.5); /* darker green border */
+  color: #006400; /* dark green text */
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 200, 0, 0.2); /* green shadow */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Smooth fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Red variant for “not found” */
+.notFound.red {
+  background: rgba(255, 87, 87, 0.1);
+  border: 1px solid rgba(200, 0, 0, 0.5);
+  color: #b30000;
+  box-shadow: 0 4px 12px rgba(200, 0, 0, 0.2);
+}
+
+/* Smooth fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Recipes container */
+.recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Each card */
+.card-class {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-class img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-class h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  padding: 12px 10px 6px;
+  flex-grow: 1;
+}
+
+.card-class button {
+  margin: 12px auto 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff6b6b, #fcb045);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255,107,107,0.3);
+}
+
+.card-class button:hover {
+  background: linear-gradient(135deg, #f85032, #e73827);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(255,107,107,0.5);
+}
+
+/* Hover effect on card */
+.card-class:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+
+/* Popup hidden initially */
+.popup-card {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  z-index: 1000;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  animation: popupShow 0.3s ease forwards;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Title styling */
+.popup-card h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+/* Recipe details */
+.popup-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
+  margin-top: 10px;
+  max-height: 300px;
+  overflow-y: auto; /* scroll if text is too long */
+}
+
+/* Close button */
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.close-popup:hover {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  transform: scale(1.05);
+}
+
+/* Overlay backdrop */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Smooth popup animation */
+@keyframes popupShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+/* Loader styles */
+.loader {
+  border: 8px solid #f3f3f3; /* Light gray */
+  border-top: 8px solid #ff512f; /* Orange/gradient top */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
